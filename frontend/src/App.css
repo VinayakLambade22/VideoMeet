@@ -1,0 +1,132 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container */
+.landing-page {
+  width: 195vh;
+  height: 100vh;  
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  font-weight: 500;
+}
+
+.navbar-links p,
+.navbar-links div {
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar-links p:hover,
+.navbar-links div:hover {
+  color: #FF9839;
+}
+
+/* Main Section */
+.main-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 5%;
+  flex-wrap: wrap;
+}
+
+.text-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 550px;
+}
+
+.text-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.highlight {
+  color: #FF9839;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.get-started-button a {
+  display: inline-block;
+  background-color: #FF9839;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-button a:hover {
+  background-color: #e27920;
+}
+
+/* Image Section */
+.image-content {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .text-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .subtext {
+    font-size: 1rem;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+    flex-direction: row;
+  }
+}

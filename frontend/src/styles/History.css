@@ -1,0 +1,57 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  /* height: 100%; */
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f2f5;
+}
+
+.history-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* width: 195vh; */
+  width: 300%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #e3f2fd, #fce4ec);
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.history-header .MuiIconButton-root {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin-right: 15px;
+  transition: 0.3s ease;
+}
+
+.history-header .MuiIconButton-root:hover {
+  background-color: #e0f2f1;
+  transform: scale(1.1);
+}
+
+.history-card {
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  border-radius: 12px !important;
+  background-color: #ffffff;
+  max-width: 600px;
+  width: 100%;
+}
+
+.history-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.empty-message {
+  text-align:start;
+  color: #777;
+  font-size: 18px;
+  margin-top: 50px;
+}

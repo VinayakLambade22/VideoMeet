@@ -1,0 +1,350 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Lobby Styles */
+.lobbyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+}
+
+.lobbyCard {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  border-radius: 16px;
+  padding: 40px;
+  width: 450px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.lobbyHeader {
+  margin-bottom: 30px;
+}
+
+.lobbyHeader h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #4a6fff;
+}
+
+.lobbyHeader p {
+  color: #a0a0c0;
+  font-size: 16px;
+}
+
+.usernameInput {
+  margin-bottom: 30px;
+}
+
+.usernameInput .connectButton {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #4a6fff;
+  transition: all 0.3s ease;
+}
+
+.connectButton:hover {
+  background-color: #3050ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 111, 255, 0.3);
+}
+
+.previewContainer {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  margin-top: 20px;
+}
+
+.previewVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.previewOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 15px;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Meeting Styles */
+.meetContainer {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.chatRoom {
+  position: absolute;
+  right: -400px;
+  top: 0;
+  bottom: 0;
+  width: 350px;
+  background-color: white;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #3a3f4b;
+  transition: right 0.3s ease;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  color: #000;
+}
+
+.chatOpen {
+  right: 0;
+}
+
+.chatHeader {
+  padding: 20px;
+  border-bottom: 1px solid #3a3f4b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.closeButton {
+  color: #000;
+}
+
+.closeButton:hover {
+  /* color: #fff; */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chattingDisplay {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+}
+
+.message {
+  background-color: #3d90d7;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.ownMessage {
+  background-color: #4a6fff;
+  margin-left: auto;
+}
+
+.messageSender {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.ownMessage .messageSender {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.messageContent {
+  font-size: 15px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.noMessages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #7a7a9a;
+  text-align: center;
+  padding: 20px;
+}
+
+.chattingArea {
+  padding: 20px;
+  border-top: 1px solid #3a3f4b;
+  display: flex;
+  gap: 12px;
+}
+
+.videoGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #12141d;
+}
+
+.localVideoContainer {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.localVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.localVideoLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.remoteVideoContainer {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.remoteVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remoteVideoLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: #fff;
+}
+
+.userBadge {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.videoOffIndicator,
+.audioOffIndicator {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.controlsContainer {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  padding: 15px 25px;
+  background-color: rgba(30, 30, 40, 0.8);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.controlButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.controlButton span {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #ddd;
+}
+
+.controlButton .MuiIconButton-root {
+  background-color: #3a3f4b;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.controlButton .MuiIconButton-root:hover {
+  background-color: #4a4f5b;
+}
+
+.activeControl {
+  background-color: #4a6fff !important;
+}
+
+.activeControl:hover {
+  background-color: #3050ff !important;
+}
+
+.inactiveControl {
+  background-color: #ff4d4d !important;
+}
+
+.endCallButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.endCallButton span {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #ddd;
+}
+
+.endCallIcon {
+  background-color: #ff4d4d !important;
+  color: #fff !important;
+  transition: all 0.2s ease;
+}
+
+.endCallIcon:hover {
+  background-color: #ff3333 !important;
+  transform: scale(1.1);
+}
