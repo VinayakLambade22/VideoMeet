@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { Snackbar } from "@mui/material";
+import server from "../environment";
 
 const defaultTheme = createTheme();
 
@@ -35,7 +36,7 @@ export default function Authentication() {
     const fetchImage = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/unsplash/random-image"
+          `${server}/api/unsplash/random-image`
         );
         setBackgroundImage(res.data.imageUrl); 
       } catch (err) {
