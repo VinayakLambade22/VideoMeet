@@ -22,7 +22,7 @@ function HomeComponent() {
       {/* Navbar */}
       <div className="navBar">
         <div className="logo-container">
-          <h2 className="logo">Videomeet</h2>
+          <h2 className="logo">VideoMeet</h2>
         </div>
 
         <div className="nav-controls">

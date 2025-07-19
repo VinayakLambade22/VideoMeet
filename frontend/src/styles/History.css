@@ -1,7 +1,6 @@
 body, html {
   margin: 0;
   padding: 0;
-  /* height: 100%; */
   font-family: 'Segoe UI', sans-serif;
   background-color: #f0f2f5;
 }
@@ -10,17 +9,19 @@ body, html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* width: 195vh; */
-  width: 300%;
+  width: 100vw;
   padding: 40px 20px;
   box-sizing: border-box;
   background: linear-gradient(to right, #e3f2fd, #fce4ec);
+  align-items: start;
 }
 
 .history-header {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .history-header .MuiIconButton-root {
@@ -50,8 +51,57 @@ body, html {
 }
 
 .empty-message {
-  text-align:start;
+  text-align: start;
   color: #777;
   font-size: 18px;
   margin-top: 50px;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .history-container {
+    padding: 30px 16px;
+  }
+
+  .history-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .history-card {
+    max-width: 90%;
+  }
+
+  .empty-message {
+    font-size: 16px;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .history-container {
+    padding: 24px 12px;
+  }
+
+  .history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .history-header .MuiIconButton-root {
+    margin-right: 0;
+  }
+
+  .history-card {
+    max-width: 100%;
+  }
+
+  .empty-message {
+    font-size: 15px;
+    text-align: center;
+  }
 }

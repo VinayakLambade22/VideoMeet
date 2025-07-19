@@ -2,12 +2,11 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 200vh;
+  width: 100vw;
   background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar Styles */
 .navBar {
   display: flex;
   justify-content: space-between;
@@ -18,6 +17,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -71,14 +71,15 @@
   border-color: #9ca3af !important;
 }
 
-/* Main Content Styles */
 .meetContainer {
   display: flex;
   flex: 1;
   padding: 2rem 5%;
+  gap: 2rem;
 }
 
-.leftPanel {
+.leftPanel,
+.rightPanel {
   flex: 1;
   display: flex;
   align-items: center;
@@ -128,11 +129,14 @@
   gap: 1rem;
   max-width: 600px;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .meeting-input {
   background-color: white;
   border-radius: 8px !important;
+  flex: 1;
+  min-width: 200px;
 }
 
 .meeting-input .MuiOutlinedInput-root {
@@ -155,14 +159,6 @@
   box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4) !important;
 }
 
-.rightPanel {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
 .image-container {
   max-width: 100%;
   height: auto;
@@ -178,35 +174,72 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
+/* Tablet (up to 900px) */
 @media (max-width: 900px) {
   .meetContainer {
     flex-direction: column;
+    padding: 1.5rem;
   }
-  
+
   .rightPanel {
-    padding-top: 0;
+    padding-top: 1rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-}
 
-@media (max-width: 600px) {
-  .navBar {
-    padding: 1rem;
+  .hero-subtitle {
+    font-size: 1.1rem;
   }
-  
+
   .join-container {
     flex-direction: column;
+    align-items: stretch;
   }
-  
+
+  .join-btn {
+    width: 100%;
+    padding: 0.75rem 2rem !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .navBar {
+    padding: 0.75rem 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-controls {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .content-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .image-container img {
+    max-height: 50vh;
   }
 }
