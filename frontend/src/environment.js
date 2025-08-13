@@ -1,6 +1,2 @@
-let IS_PROD = true;
-const server = IS_PROD
-  ? "https://videomeetbackend-48t3.onrender.com"
-  : "http://localhost:8000";
-
+const server = import.meta.env.VITE_SERVER;
 export default server;
