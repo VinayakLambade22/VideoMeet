@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import withAuth from "../utils/withAuth";
 import { useNavigate } from "react-router-dom";
 // import "../App.css";
@@ -49,7 +49,6 @@ function HomeComponent() {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="meetContainer">
         <div className="leftPanel">
           <div className="content-wrapper">

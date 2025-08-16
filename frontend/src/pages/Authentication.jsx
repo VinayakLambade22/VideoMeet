@@ -35,10 +35,8 @@ export default function Authentication() {
   React.useEffect(() => {
     const fetchImage = async () => {
       try {
-        const res = await axios.get(
-          `${server}/api/unsplash/random-image`
-        );
-        setBackgroundImage(res.data.imageUrl); 
+        const res = await axios.get(`${server}/api/unsplash/random-image`);
+        setBackgroundImage(res.data.imageUrl);
       } catch (err) {
         console.error("Failed to fetch Unsplash image", err);
       }
@@ -73,20 +71,23 @@ export default function Authentication() {
         sx={{
           height: "100vh",
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "10fr 4fr" },
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "6fr 6fr",
+            md: "10fr 4fr",
+          },
         }}
       >
-        {/* Left Background */}
+
         <Box
           sx={{
-            display: { xs: "none", md: "block" },
+            display: { xs: "none", sm: "block" },
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
 
-        {/* Right Login/Signup */}
         <Box
           sx={{
             width: "100%",
@@ -102,8 +103,8 @@ export default function Authentication() {
             elevation={8}
             square
             sx={{
-              width: { xs: "90%", sm: "80%", md: "100%" },
-              maxWidth: 450,
+              width: { xs: "90%", sm: "70%", md: "100%" },
+              maxWidth: 600,
               p: 4,
               borderRadius: 3,
             }}
