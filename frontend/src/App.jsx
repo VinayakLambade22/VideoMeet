@@ -6,6 +6,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import VideoMeetComponent from "./pages/VideoMeet";
 import HomeComponent from "./pages/Home";
 import History from "./pages/History";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -15,9 +16,36 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<Authentication />} />
-            <Route path="/home" s element={<HomeComponent />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/:url" element={<VideoMeetComponent />} />
+            <Route
+              path="/guest"
+              element={<VideoMeetComponent isGuest={true} />}
+            />
+
+            {/*Protected Routes */}
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <HomeComponent />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/history"
+              element={
+                <ProtectedRoute>
+                  <History />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/:url"
+              element={
+                <ProtectedRoute>
+                  <VideoMeetComponent isGuest={false} />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </AuthProvider>
       </Router>

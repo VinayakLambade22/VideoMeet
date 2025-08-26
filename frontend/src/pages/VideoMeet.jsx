@@ -23,7 +23,7 @@ const peerConfigConnections = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
 };
 
-export default function VideoMeetComponent() {
+export default function VideoMeetComponent({ isGuest }) {
   var socketRef = useRef();
   let socketIdRef = useRef();
   let localVideoref = useRef();
@@ -472,11 +472,14 @@ export default function VideoMeetComponent() {
   };
 
   let connect = () => {
-    if (username.trim() !== "") {
-      setAskForUsername(false);
-      getMedia();
-    }
-  };
+  if (username.trim() !== "") {
+    setAskForUsername(false);
+    getMedia();
+  } else if (!isGuest && !localStorage.getItem("token")) {
+    // only protected users must login
+    router("/auth");
+  }
+};
 
   return (
     <div className={styles.container}>
