@@ -26,6 +26,16 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (request.status === httpStatus.CREATED) {
+        const loginResponse = await client.post("/login", {
+          username,
+          password,
+        });
+
+        if (loginResponse.status === httpStatus.OK) {
+          localStorage.setItem("token", loginResponse.data.token);
+          router("/home");
+        }
+
         return request.data.message;
       }
     } catch (err) {
