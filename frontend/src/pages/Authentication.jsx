@@ -47,19 +47,35 @@ export default function Authentication() {
   const handleAuth = async () => {
     try {
       if (formState === 0) {
+        if (!username || !password) {
+          setError("Username and password required");
+          return;
+        }
         await handleLogin(username, password);
       } else {
+        if (!name || !username || !password) {
+          setError("All fields are required");
+          return;
+        }
+
         const result = await handleRegister(name, username, password);
+
+        setName("");
         setUsername("");
         setPassword("");
+
         setMessage(result);
         setOpen(true);
         setError("");
-        setFormState(0);
       }
     } catch (err) {
-      let message = err.response?.data?.message || "Something went wrong";
+      const message = err.response?.data?.message || "Something went wrong";
       setError(message);
+
+      if (formState === 0) {
+        setUsername("");
+        setPassword("");
+      }
     }
   };
 
@@ -78,7 +94,6 @@ export default function Authentication() {
           },
         }}
       >
-
         <Box
           sx={{
             display: { xs: "none", sm: "block" },
@@ -137,7 +152,10 @@ export default function Authentication() {
                 <Button
                   fullWidth
                   variant={formState === 0 ? "contained" : "outlined"}
-                  onClick={() => setFormState(0)}
+                  onClick={() => {
+                    setFormState(0);
+                    setError("");
+                  }}
                   sx={{ borderRadius: 5, textTransform: "none" }}
                 >
                   Sign In
@@ -145,7 +163,10 @@ export default function Authentication() {
                 <Button
                   fullWidth
                   variant={formState === 1 ? "contained" : "outlined"}
-                  onClick={() => setFormState(1)}
+                  onClick={() => {
+                    setFormState(1);
+                    setError("");
+                  }}
                   sx={{ borderRadius: 5, textTransform: "none" }}
                 >
                   Sign Up
