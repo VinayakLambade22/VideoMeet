@@ -15,7 +15,7 @@ const login = async (req, res) => {
     if (!user) {
       return res
         .status(httpStatus.NOT_FOUND)
-        .json({ message: "User Not Found" });
+        .json({ message: "Account does not exist. Sign up to continue." });
     }
 
     let isPasswordCorrect = await bcrypt.compare(password, user.password);
