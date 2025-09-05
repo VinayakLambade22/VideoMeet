@@ -13,7 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AuthContext } from "../contexts/AuthContext";
-import { Snackbar } from "@mui/material";
+import { Snackbar, CircularProgress } from "@mui/material";
 import server from "../environment";
 
 const defaultTheme = createTheme();
@@ -29,6 +29,7 @@ export default function Authentication() {
   const [formState, setFormState] = React.useState(0); // 0 = login, 1 = register
   const [open, setOpen] = React.useState(false);
   const [backgroundImage, setBackgroundImage] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
   const { handleRegister, handleLogin } = React.useContext(AuthContext);
 
@@ -46,15 +47,18 @@ export default function Authentication() {
 
   const handleAuth = async () => {
     try {
+      setLoading(true); 
       if (formState === 0) {
         if (!username || !password) {
           setError("Username and password required");
+          setLoading(false);
           return;
         }
         await handleLogin(username, password);
       } else {
         if (!name || !username || !password) {
           setError("All fields are required");
+          setLoading(false);
           return;
         }
 
@@ -76,6 +80,8 @@ export default function Authentication() {
         setUsername("");
         setPassword("");
       }
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -230,10 +236,20 @@ export default function Authentication() {
                     fontWeight: "bold",
                     borderRadius: 2,
                     textTransform: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                   onClick={handleAuth}
+                  disabled={loading}
                 >
-                  {formState === 0 ? "Login" : "Register"}
+                  {loading ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : formState === 0 ? (
+                    "Login"
+                  ) : (
+                    "Register"
+                  )}
                 </Button>
 
                 <Button
