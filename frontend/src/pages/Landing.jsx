@@ -1,8 +1,15 @@
+import { useState } from "react";
 import "../App.css";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
   const router = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLinkClick = (path) => {
+    router(path);
+    setIsMenuOpen(false); 
+  };
 
   return (
     <div className="landing-page">
@@ -10,10 +17,22 @@ export default function LandingPage() {
         <div className="navbar-header">
           <h2 className="logo">VideoMeet</h2>
         </div>
-        <div className="navbar-links">
-          <p onClick={() => router("/guest")}>Join as Guest</p>
-          <p onClick={() => router("/auth")}>Register</p>
-          <div onClick={() => router("/auth")} role="button">
+
+        <div
+          className={`hamburger-menu ${isMenuOpen ? "open" : ""}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          role="button"
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
+          <p onClick={() => handleLinkClick("/guest")}>Join as Guest</p>
+          <p onClick={() => handleLinkClick("/auth")}>Register</p>
+          <div onClick={() => handleLinkClick("/auth")} role="button">
             <p>Login</p>
           </div>
         </div>
