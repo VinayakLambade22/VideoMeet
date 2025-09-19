@@ -1,4 +1,4 @@
-# Zoom Clone - Video Conferencing Application (VideoMeet)
+# VideoMeet - Video Conferencing Application
 
 A full-stack video conferencing application built with React, Express.js, and Socket.IO, providing real-time video calling capabilities similar to Zoom.
 
@@ -33,11 +33,12 @@ A full-stack video conferencing application built with React, Express.js, and So
 ## 📁 Project Structure
 
 ```
-Zoom/
+VideoMeet/
 ├── backend/
 │   ├── src/
 │   │   ├── app.js              # Main server file
 │   │   ├── controllers/        # Business logic
+│   │   ├── models/             # Database models
 │   │   └── routes/             # API routes
 │   └── package.json
 ├── frontend/
@@ -63,7 +64,7 @@ Zoom/
 1. **Clone the repository**
    ```bash
    git clone https://github.com/VinayakLambade22/VideoMeet.git
-   cd Zoom
+   cd VideoMeet
    ```
 
 2. **Install backend dependencies**
@@ -83,7 +84,7 @@ Zoom/
    Create a `.env` file in the backend directory:
    ```env
    PORT=8000
-   MONGO_URL=mongodb://localhost:27017/zoom-clone
+   MONGO_URL=mongodb://localhost:27017/videomeet
    # Add other environment variables as needed
    ```
 
