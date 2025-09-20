@@ -4,17 +4,33 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-const app = express();
-const server = createServer(app);
-const io = connectToSocket(server);
-dotenv.config();
-
 import { connectToSocket } from "./controllers/socketManager.js";
 import userRoutes from "./routes/user.routes.js";
 import unsplashRoutes from "./routes/unsplash.routes.js";
 
+dotenv.config();
+
+const app = express();
+const server = createServer(app);
+const allowedOrigins = [process.env.LOCAL_ORIGIN, process.env.PROD_ORIGIN];
+const io = connectToSocket(server, allowedOrigins);
+
 app.set("port", process.env.PORT || 8000);
-app.use(cors());
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = `CORS policy: This origin (${origin}) is not allowed`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json({ limit: "40kb" }));
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
 
